@@ -14,7 +14,7 @@ def parse_csv_file(csv_file):
 
 # Get the map region using Google Static Maps.
 def get_area_map(latitude, longitude):
-    url = "https://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=14&size=224x224&maptype=satellite&key=AIzaSyBWZgOcVdjJs-TsmRlN_O7m0tZdxlhQHzM" % (latitude, longitude)
+    url = "https://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=14&size=224x224&maptype=satellite&key=" % (latitude, longitude)
     img_array = np.asarray(bytearray(request.urlopen(url).read()), dtype=np.uint8)
     image = cv2.imdecode(img_array, 1)
     cv2.imwrite(os.path.join(path ,str(latitude)+','+ str(longitude)+'.png'), image)
@@ -65,5 +65,3 @@ print(data_value)
 #     coords = coords.translate(str.maketrans('','','() ')).split(',')
 #     get_area_map(float(coords[0]), float(coords[1]))
 #     i = i + 1
-
-
